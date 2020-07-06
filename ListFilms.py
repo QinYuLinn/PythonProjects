@@ -48,14 +48,14 @@ for news in tencent_target_div.find_all('a',class_='figure_title'):
 youku_request=requests.get(url_youku,timeout=30)
 youku_soup=BeautifulSoup(youku_request.content,'html.parser')
 youku_target_div=youku_soup.find('div',class_='focusswiper_focus_wrap')
-for news in youku_target_div.find_all('a',target='_blank'):
+for news in youku_target_div.find_all('a',class_='aplus_exp'):
     if len(news)>0:
         title=str(news.get('title'))
         if (title+'\n') in film_exists_set:
             continue
         else:
             film_exists_set.add((title+'\n'))
-            link=str(news.get('href'))
+            link=str(news.get('data-href'))
             if (url_default_part in link):
                 link=link
             else:
