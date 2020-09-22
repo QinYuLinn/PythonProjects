@@ -10,7 +10,7 @@ except Exception:
         exit
 flag=1#测试脚本时的一个控制变量
 seperator=","#csv文件的分隔符
-tail_content="\hline"#表格每行最后添加的字符串，当为\hline时表示完全表格
+tail_content=""#表格每行最后添加的字符串，当为\hline时表示完全表格
 space_fill_string="null"#表格中有空的数据项时用此字符填充
 text="\hline"+'\n'#三线表固定格式
 index_viarable=0
