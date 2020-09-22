@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup #导入程序运行所依赖的python包
 sys.path.append("/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages")
 url_iqiyi="https://www.iqiyi.com/dianying/?vfrm=pcw_home&vfrmblk=C&vfrmrst=712211_channel_dianying"
 url_tencent="https://v.qq.com/channel/movie"
+url_youku="https://movie.youku.com/?spm=a2hcb.12675304.m_6913.5~5~5~5~5!2~5~5~A"#设置爬虫网站的网址
 filename="/Users/qinyulin/PythonProjects/Works/IqiyiFilmsContent.txt"
 filepointer=open(filename,'r+')
 film_exists_set=set()
@@ -20,12 +21,14 @@ for news in iqiyi_soup.find_all('a',class_='img-link'):
         else:               #没有保存过的电影信息打印出来并将电影名称添加到文件中
             film_exists_set.add((title+'\n'))
             link=str(news.get('href'))
+            intro=str(news.get('data-indexfocus-description'))
             if (url_default_part in link):
                 link=link
             else:
                 link=link.replace('//','https://')
             print('film name:'+title)
-            print('film link:'+'\t'+link+'\n')
+            print('film link:'+'\t'+link)
+            print('film intro:'+'\t'+intro+'\n')
 #由于不同网站html代码有差异，因此爬虫不同网站的代码需要单独编写
 tencent_request = requests.get(url_tencent,timeout=30)#输入字节流，解决编码问题
 tencent_soup = BeautifulSoup(tencent_request.content,'html.parser')
@@ -38,6 +41,23 @@ for news in tencent_target_div.find_all('a',class_='figure_title'):
         else:
             film_exists_set.add((title+'\n'))
             link=str(news.get('href'))
+            if (url_default_part in link):
+                link=link
+            else:
+                link=link.replace('//','https://')
+            print('film name:'+title)
+            print('film link:'+'\t'+link+'\n')
+youku_request=requests.get(url_youku,timeout=30)
+youku_soup=BeautifulSoup(youku_request.content,'html.parser')
+youku_target_div=youku_soup.find('div',class_='focusswiper_focus_wrap')
+for news in youku_target_div.find_all('a',class_='aplus_exp'):
+    if len(news)>0:
+        title=str(news.get('title'))
+        if (title+'\n') in film_exists_set:
+            continue
+        else:
+            film_exists_set.add((title+'\n'))
+            link=str(news.get('data-href'))
             if (url_default_part in link):
                 link=link
             else:
