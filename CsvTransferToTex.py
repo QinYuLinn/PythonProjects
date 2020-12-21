@@ -1,6 +1,6 @@
 import random
 output_name_random=random.randint(0,50)#生成随机数命名文件
-file_source_data="/Users/qinyulin/Desktop/daily.csv"
+file_source_data="/Users/qinyulin/Desktop/Semester_courses/20-21学年/02计算物理学A/作业/HW2/datas/RougeEffectData.csv"
 file_output_data="/Users/qinyulin/Tex_Document/Current/Transfer_"+str(output_name_random)+".tex"
 try:
         file_pointer_data_read=open(file_source_data,'r')
