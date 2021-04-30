@@ -20,6 +20,9 @@ ConsAlpha=UnitElectro**2/(4.0*Pi*EpsionInVacuum*HBar*SpeedLight)
 print('ConsAlpha(精细结构常数):\n'+str(ConsAlpha)+'\n')
 
 ConsEE=UnitElectro*UnitElectro/(4.0*Pi*EpsionInVacuum)/ConsMeV*10**(15)
-print('ConsEE(MeV·fm):\n'+str(ConsQQ)+'\n')
+print('ConsEE(MeV·fm):\n'+str(ConsEE)+'\n')
+
+ConsWaveLengthElectro=HBar*SpeedLight/(MassElectro*SpeedLight**2)*10**(12)
+print('ConsWaveLengthElectro(pm):\n'+str(ConsWaveLengthElectro)+'\n')
 
 
