@@ -25,4 +25,5 @@ print('ConsEE(MeV·fm):\n'+str(ConsEE)+'\n')
 ConsWaveLengthElectro=HBar*SpeedLight/(MassElectro*SpeedLight**2)*10**(12)
 print('ConsWaveLengthElectro(pm):\n'+str(ConsWaveLengthElectro)+'\n')
 
-
+ConsHHumev=(HBar**2/UnitMass/ConsMeV)**(0.5)*10**(15)
+print('ConsHHumev(fm):\n'+str(ConsHHumev)+'\n')
