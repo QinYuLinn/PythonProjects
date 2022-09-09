@@ -1,7 +1,6 @@
-import random
-output_name_random=random.randint(0,50)#生成随机数命名文件
-file_source_data="/Users/qinyulin/Root/TestCodes/temp.c"
-file_output_data="/Users/qinyulin/PythonProjects/Current/"+str(output_name_random)+".c"
+import sys
+file_source_data=sys.argv[1]
+file_output_data=sys.argv[2]
 try:
         file_pointer_data_read=open(file_source_data,'r')
         file_pointer_data_write=open(file_output_data,'w')

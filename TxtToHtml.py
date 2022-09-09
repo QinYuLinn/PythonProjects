@@ -1,7 +1,4 @@
 import sys
-import requests
-from bs4 import BeautifulSoup #导入程序运行所依赖的python包
-sys.path.append("/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages")
 weeping_title=sys.argv[1]
 weeping_author=sys.argv[2]
 weeping_source_file=sys.argv[3]

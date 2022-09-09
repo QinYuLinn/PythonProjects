@@ -36,7 +36,7 @@ try:
     connection = mysql.connector.connect(host='localhost',
                                          database='RefSchema',
                                          user='root',
-                                         password='QYLQYL20142017',autocommit=True)
+                                         password='QYLQYL20142017',autocommit=True,auth_plugin='mysql_native_password')
     if connection.is_connected():
         sql_query="select citationkey from reference where class='"+database_class+"';"
         cursor = connection.cursor()
